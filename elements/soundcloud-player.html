@@ -1,0 +1,69 @@
+<polymer-element name="soundcloud-player" attributes="track-id playlist-id color auto-play show-artwork">
+  <template>
+    <style>
+      :host iframe {
+        border: none;
+        overflow: hidden;
+        width: 100%;
+      }
+      .soundcloud-song {
+        height: 166px;
+      }
+      .soundcloud-playlist {
+        height: 450px;
+      }
+    </style>
+
+    <template bind if="{{ isTrack || isPlaylist }}">
+      <iframe class="{{ cssClass }}" src="{{ playerUrl }}"></iframe>
+    </template>
+  </template>
+
+  <script>
+    Polymer('soundcloud-player', {
+      "color": 'ff6600',
+      "auto-play": false,
+      "show-artwork": true,
+
+      ready: function() {
+        if(this["track-id"]) {
+          this.isTrack = true;
+          this.cssClass = "soundcloud-song";
+        }
+        else if(this["playlist-id"]) {
+          this.isPlaylist = true;
+          this.cssClass = "soundcloud-playlist";
+        }
+        else {
+          return; // Invalid - no track ID or playlist ID provided.
+        }
+        this.playerUrl = this.getPlayerUrl();
+      },
+
+      getPlayerUrl: function() {
+        var params = {
+          url: this.getApiUrl(),
+          color: this.color,
+          auto_play: this["auto-play"],
+          show_artwork: this["show-artwork"]
+        };
+        var paramPairs = [];
+        for(var key in params) {
+          paramPairs.push(key + "=" + encodeURIComponent(params[key]));
+        }
+        return "https://w.soundcloud.com/player/?" + paramPairs.join("&amp;");
+      },
+
+      getApiUrl: function() {
+        var url = "https://api.soundcloud.com/";
+        if(this.isTrack) {
+          url += "tracks/" + this["track-id"];
+        }
+        else {
+          url += "playlists/" + this["playlist-id"];
+        }
+        return url;
+      }
+    });
+  </script>
+</polymer-element>
