@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../elements/post-service.html">
+<link rel="import" href="../elements/soundcloud-player.html">
 <link rel="import" href="post-card.html">
 
 <polymer-element name="post-list" attributes="show">
@@ -27,6 +28,7 @@
           <img src="{{post.avatar}}" width="70" height="70">
           <h2>{{post.username}}</h2>
           <p>{{post.text}}</p>
+          <soundcloud-player track-id="159055491"></soundcloud-player>
         </post-card>
       </template>
 
