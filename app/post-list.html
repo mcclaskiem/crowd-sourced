@@ -20,6 +20,7 @@
     </post-service>
 
     <div layout vertical center>
+      <facebook-login appID="335690493270381"></facebook-login>
 
       <template repeat="{{post in posts}}">
         <post-card
@@ -29,7 +30,6 @@
           <img src="{{post.avatar}}" width="70" height="70">
           <h2>{{post.username}}</h2>
           <p>{{post.text}}</p>
-          <facebook-login appID="335690493270381"></facebook-login>
           <soundcloud-player track-id="159055491"></soundcloud-player>
         </post-card>
       </template>
