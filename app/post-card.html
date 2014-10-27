@@ -1,17 +1,19 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+&lt;!-- import default iconset and core-icon --&gt;
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
 
 <polymer-element name="post-card">
   <template>
     <style>
     :host {
-      display: block;
+      display: inline;
       position: relative;
       background-color: white;
       padding: 20px;
       width: 100%;
       font-size: 1.2rem;
       font-weight: 300;
+      height: 300px
     }
     .card-header {
       margin-bottom: 10px;
@@ -31,14 +33,14 @@
       margin: 10px;
     }
 
-    core-icon-button {
+    core-icon {
       position: absolute;
       top: 3px;
       right: 3px;
-      color: #636363;
+      color: #E5E5E5;
     }
 
-    :host([favorite]) core-icon-button {
+    :host([favorite]) core-icon {
       color: #da4336;
     }
     
@@ -46,14 +48,19 @@
 
     <div class="card-header" layout horiztonal center>
       <content select="img"></content>
-      <content select="h2"></content>
     </div>
 
-    <core-icon-button
+    <core-icon
       id="favicon"
-      icon="favorite"
+      icon="keyboard-arrow-up"
       on-tap="{{favoriteTapped}}">
-    </core-icon-button>
+    </core-icon>
+
+    <core-icon
+      id="favicon"
+      icon="keyboard-arrow-down"
+      on-tap="{{favoriteTapped}}">
+    </core-icon>
 
 
     <content></content>

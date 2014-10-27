@@ -11,6 +11,10 @@
       display: block;
       width: 100%;
     }
+
+    p {
+      display: inline;
+    }
     post-card {
       margin-bottom: 30px;
     }
@@ -20,7 +24,6 @@
     </post-service>
 
     <div layout vertical center>
-      <facebook-login appID="335690493270381"></facebook-login>
 
       <template repeat="{{post in posts}}">
         <post-card
@@ -28,8 +31,6 @@
           on-favorite-tap="{{handleFavorite}}"
           hidden?="{{show == 'favorites' && !post.favorite}}">
           <img src="{{post.avatar}}" width="70" height="70">
-          <h2>{{post.username}}</h2>
-          <p>{{post.text}}</p>
           <soundcloud-player track-id="159055491"></soundcloud-player>
         </post-card>
       </template>
