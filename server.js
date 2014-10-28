@@ -1,14 +1,16 @@
-var express = require('express'),
-	bodyParser = require('body-parser');
+var static = require('node-static');
 
-var app = express();
+//
+// Create a node-static server instance to serve the './public' folder
 
-app.set(function () {
-	app.use(express.bodyParser());
-	app.use(express.static(__dirname + '/app')); 
-	app.use(express.methodOverride());
-});
+var file = new static.Server('./polymer');
 
-app.use(express.bodyParser());
 
-app.listen(process.env.PORT || 4730);
+require('http').createServer(function (request, response) {
+    request.addListener('end', function () {
+        //
+        // Serve files!
+        //
+        file.serve(request, response);
+    }).resume();
+}).listen(8000);
