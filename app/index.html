@@ -15,6 +15,7 @@
  <link rel="import" href="../bower_components/font-roboto/roboto.html">
  <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
  <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
  <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
  <link rel="import" href="post-card.html">
  <link rel="import" href="post-list.html">
@@ -68,10 +69,10 @@
   <core-header-panel>
 
     <core-toolbar>
-      <paper-tabs id="tabs" selected="all" self-end>
-        <paper-tab name="all">All</paper-tab>
-        <paper-tab name="favorites">Favorites</paper-tab>
-      </paper-tabs>
+      <core-icon-button icon="menu"></core-icon-button>
+      <span flex>Toolbar</span>
+      <core-icon-button icon="refresh"></core-icon-button>
+      <core-icon-button icon="add"></core-icon-button>
 
     </core-toolbar>
 
