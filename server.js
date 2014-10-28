@@ -1,14 +1,14 @@
-var fs = require("fs");
-var host = "0.0.0.0";
-var port = 5000;
-var express = require("express");
+var express = require('express'),
+	bodyParser = require('body-parser');
 
-var app = express(); //use both root and other routes below
-app.use(express.static(__dirname + "/app")); //use static files in ROOT/public folder
+var app = express();
 
-app.get("/", function(request, response){ //root dir
-    response.send("Hello!!");
+app.set(function () {
+	app.use(express.bodyParser());
+	app.use(express.static(__dirname + '/app')); 
+	app.use(express.methodOverride());
 });
 
-app.listen(port, host);
+app.use(express.bodyParser());
 
+app.listen(process.env.PORT || 4730);

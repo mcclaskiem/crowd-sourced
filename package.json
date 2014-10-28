@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mcclaskiem/crowd-sourced",
   "dependencies": {
-    "express": "^4.10.0"
+    "express": "^4.10.0",
+    "body-parser":"*"
   }
 }
