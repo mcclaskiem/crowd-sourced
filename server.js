@@ -1,4 +1,5 @@
 var fs = require("fs");
+var host = "0.0.0.0";
 var port = 5000;
 var express = require("express");
 
