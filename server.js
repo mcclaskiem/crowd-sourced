@@ -1,6 +1,5 @@
 var fs = require("fs");
-var host = "0.0.0.0";
-var port = 8000;
+var port = 5000;
 var express = require("express");
 
 var app = express(); //use both root and other routes below
