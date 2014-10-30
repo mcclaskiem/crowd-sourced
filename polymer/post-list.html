@@ -31,7 +31,7 @@
           on-favorite-tap="{{handleFavorite}}"
           hidden?="{{show == 'favorites' && !post.favorite}}">
           <img src="{{post.avatar}}" width="70" height="70">
-          <soundcloud-player track-id="159055491"></soundcloud-player>
+          <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
         </post-card>
       </template>
 
