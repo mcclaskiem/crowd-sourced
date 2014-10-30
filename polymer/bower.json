@@ -1,13 +1,12 @@
 {
-  "name": "polymer-tutorial",
-  "version": "0.4.2",
-  "homepage": "https://github.com/Polymer/polymer-tutorial",
+  "name": "crowd-sourced",
+  "version": "0.1.0",
+  "homepage": "https://crowd-sourced.herokuapp.com",
   "authors": [
-    "Arthur Evans <arthure@google.com>",
-    "Rob Dodson <robdodson@google.com>",
-    "Eric Bidelman <ericbidelman@google.com>"
+    "Max McClaskie <max.mcclaskie@gmail.com>",
+    "Scott Kuchinski <scottkuchinski@gmail.com>"
   ],
-  "description": "Polymer tutorial for read-only social network app",
+  "description": "Crowd sourced Music recommendation engine built with Polymer, Node.js, and web components",
   "license": "MIT",
   "private": true,
   "ignore": [
