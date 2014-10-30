@@ -18,6 +18,15 @@
     post-card {
       margin-bottom: 30px;
     }
+
+
+    .vote-count {
+      position: relative;
+      float: right;
+      top: -75px;
+      right: 0px;
+      margin: 0;
+    }
     </style>
     
     <post-service id="service" posts="{{posts}}">
@@ -31,6 +40,7 @@
           on-favorite-tap="{{handleFavorite}}"
           hidden?="{{show == 'favorites' && !post.favorite}}">
           <img src="{{post.avatar}}" width="70" height="70">
+          <h3 class="vote-count">2</h3>
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
         </post-card>
       </template>
