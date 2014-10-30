@@ -1,7 +1,6 @@
 [
   {
     "uid": 1,
-    "text" : "Have you heard about the Web Components revolution?",
     "username" : "Eric",
     "avatar" : "../images/avatar-01.svg",
     "vote": 7,
@@ -9,7 +8,6 @@
   },
   {
     "uid": 2,
-    "text" : "Loving this Polymer thing.",
     "username" : "Rob",
     "avatar" : "../images/avatar-02.svg",
     "vote": 6,
@@ -17,7 +15,6 @@
   },
     {
     "uid": 3,
-    "text" : "So last year...",
     "username" : "Dimitri",
     "avatar" : "../images/avatar-03.svg",
     "vote": -1,
@@ -25,7 +22,6 @@
   },
   {
     "uid": 4,
-    "text" : "Pretty sure I came up with that first.",
     "username" : "Ada",
     "avatar" : "../images/avatar-07.svg",
     "vote": 5,
