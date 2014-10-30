@@ -36,10 +36,7 @@
     <div layout vertical center>
 
       <template repeat="{{post in posts}}">
-        <post-card
-          favorite="{{post.favorite}}"
-          on-favorite-tap="{{handleFavorite}}"
-          hidden?="{{show == 'favorites' && !post.favorite}}">
+        <post-card>
           <img src="{{post.avatar}}" width="70" height="70">
           <h3 class="vote-count">{{post.vote}}</h3>
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
