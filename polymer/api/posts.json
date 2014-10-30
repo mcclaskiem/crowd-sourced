@@ -4,7 +4,7 @@
     "text" : "Have you heard about the Web Components revolution?",
     "username" : "Eric",
     "avatar" : "../images/avatar-01.svg",
-    "favorite": false,
+    "vote": false,
     "track": "173321059"
   },
   {
@@ -12,7 +12,7 @@
     "text" : "Loving this Polymer thing.",
     "username" : "Rob",
     "avatar" : "../images/avatar-02.svg",
-    "favorite": false,
+    "vote": false,
     "track": "173321059"
   },
     {
@@ -20,7 +20,7 @@
     "text" : "So last year...",
     "username" : "Dimitri",
     "avatar" : "../images/avatar-03.svg",
-    "favorite": false,
+    "vote": false,
     "track": "173321059"
   },
   {
@@ -28,7 +28,7 @@
     "text" : "Pretty sure I came up with that first.",
     "username" : "Ada",
     "avatar" : "../images/avatar-07.svg",
-    "favorite": false,
+    "vote": false,
     "track": "173321059"
   }
 ]
