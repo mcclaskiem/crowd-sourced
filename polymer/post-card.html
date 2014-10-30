@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 &lt;!-- import default iconset and core-icon --&gt;
-<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
 
 <polymer-element name="post-card">
   <template>
@@ -33,14 +33,18 @@
       margin: 10px;
     }
 
-    core-icon {
+    core-icon-button {
       position: absolute;
+      float: right;
       top: 3px;
-      right: 3px;
+      right: 8px;
       color: #E5E5E5;
     }
+    .arrow-down {
+      right:64px;
+    }
 
-    :host([favorite]) core-icon {
+    :host([upvote]) core-icon-button {
       color: #da4336;
     }
     
@@ -50,18 +54,19 @@
       <content select="img"></content>
     </div>
 
-    <core-icon
-      id="favicon"
-      icon="keyboard-arrow-up"
-      on-tap="{{favoriteTapped}}">
-    </core-icon>
+        <core-icon-button
+          class="arrow-up"
+          icon="expand-more"
+          iconSize="48"
+          on-tap="{{favoriteUp}}">
+        </core-icon-button>
 
-    <core-icon
-      id="favicon"
-      icon="keyboard-arrow-down"
-      on-tap="{{favoriteTapped}}">
-    </core-icon>
-
+        <core-icon-button
+        class="arrow-down"
+          icon="expand-less"
+          iconSize="48"
+          on-tap="{{favoriteDown}}">
+        </core-icon-button>
 
     <content></content>
     
@@ -74,7 +79,7 @@
         reflect: true
       }
     },
-    favoriteTapped: function(event, detail, sender) {
+    favoriteUp: function(event, detail, sender) {
       this.favorite = !this.favorite;
       this.fire('favorite-tap');
     }
