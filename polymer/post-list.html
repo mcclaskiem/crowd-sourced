@@ -28,6 +28,10 @@
       margin: 0;
       color: #FF6600;
     }
+
+/*    .username {
+      margin: 0;  
+    }*/
     </style>
     
     <post-service id="service" posts="{{posts}}">
@@ -37,6 +41,7 @@
 
       <template repeat="{{post in posts}}">
         <post-card>
+          <!-- <h3 class="username">{{post.username}}</h3> -->
           <img src="{{post.avatar}}" width="70" height="70">
           <h3 class="vote-count">{{post.vote}}</h3>
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
