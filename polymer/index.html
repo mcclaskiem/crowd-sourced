@@ -90,7 +90,7 @@
 
     <core-overlay backdrop class="core-transition-top">
       <h2>New Song</h2>
-      <paper-input label="Genre"></paper-input>
+      <paper-input id="genre" label="Genre"></paper-input>
       <paper-input id="soundcloud" label="Soundcloud URL"></paper-input>
       <paper-button raised core-overlay-toggle id="song-post">Post</paper-button>
     </core-overlay>
@@ -113,6 +113,7 @@ function openDialog() {
 
 </script>
 <script src="http://connect.soundcloud.com/sdk.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 SC.initialize({
   client_id: '71fa678e4b9d3b6f60126aae271dd51b'
@@ -123,13 +124,24 @@ document.getElementById("song-post").addEventListener("click", getTrackId);
 
 
 function getTrackId () {
+  var genre = document.getElementById("genre");
+  var genre_input = genre.value;
+
   var track_input = document.getElementById("soundcloud");
   var track_url = track_input.value;
+
 
 
   SC.get('/resolve', { url: track_url }, function(track) {
     SC.get('/tracks/' + track.id);
       console.log(track.id);
+  });
+
+  $.ajax ({
+      type: "POST",
+      url: '../api/posts.json',
+      data: '{"genre": genre_input}',
+      dataType: 'json'
   });
 };
 </script>
