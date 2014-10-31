@@ -113,7 +113,7 @@ function openDialog() {
 
 </script>
 <script src="http://connect.soundcloud.com/sdk.js"></script>
- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 SC.initialize({
   client_id: '71fa678e4b9d3b6f60126aae271dd51b'
@@ -139,8 +139,9 @@ function getTrackId () {
 
   $.ajax ({
       type: "POST",
-      url: '../api/posts.json',
-      data: '{"genre": genre_input}',
+      url: '../api/newposts.json',
+      data: {genre: 'genre_input'},
+      success: 'success',
       dataType: 'json'
   });
 };
