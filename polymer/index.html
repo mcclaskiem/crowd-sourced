@@ -138,10 +138,10 @@ function getTrackId () {
   });
 
   $.ajax ({
-      type: "POST",
+      type: "post",
       url: '/posts',
       data: {genre: 'genre_input'},
-      success: 'success',
+      // success: 'success',
       dataType: 'json'
   });
 };

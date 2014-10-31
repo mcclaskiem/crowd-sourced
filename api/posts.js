@@ -38,7 +38,7 @@ exports.findAll = function(req, res) {
 };
 
 exports.postSong = function(req, res) {
-	var posts = req.body;
+	var post = req.body;
 	console.log('Adding Song: ' + JSON.stringify(post));
 	db.collection('posts', function(err, collection) {
 		collection.insert(post, {safe:true}, function(err, result){
@@ -89,7 +89,7 @@ exports.deletePost = function(req, res) {
 
 var populateDB = function() {
  
-    var posts = [
+    var post = [
     {
         name: "CHATEAU DE SAINT COSME",
         year: "2009",
