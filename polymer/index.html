@@ -121,11 +121,12 @@ SC.initialize({
 // permalink to a trackw
 document.getElementById("song-post").addEventListener("click", getTrackId);
 
-var track_input = document.getElementById("soundcloud");
-var track_url = track_input.value;
-
 
 function getTrackId () {
+  var track_input = document.getElementById("soundcloud");
+  var track_url = track_input.value;
+
+
   SC.get('/resolve', { url: track_url }, function(track) {
     SC.get('/tracks/' + track.id);
       console.log(track.id);
