@@ -3,13 +3,13 @@
 
 <head>
 
-  <title>unquote</title>
+  <title>Tuned-In</title>
 
   <meta name="viewport" 
   content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
   <script src="../bower_components/platform/platform.js"></script>
-  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  
 
  
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
@@ -18,6 +18,8 @@
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../bower_components/core-overlay/core-overlay.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="post-card.html">
 <link rel="import" href="post-list.html">
 
@@ -43,11 +45,24 @@
         max-width: 80%;
         margin: 50px auto;
       }
-      input {
+      h2 {
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+      paper-input {
         display: block;
-        zoom: 2;
+        text-align: center;
+        margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
+      }
+
+      core-overlay {
+        background: #26466D;
+        opacity: .75;
+        width: 30%;
+        height: 30%;
+        text-align: center;
       }
       @media (max-width: 481px) {
         .container {
@@ -74,11 +89,11 @@
       <core-icon-button icon="add" onClick="openDialog()"></core-icon-button>
     </core-toolbar>
 
-    <core-overlay backdrop transition="core-transition-top">
+    <core-overlay backdrop class="core-transition-top">
       <h2>New Song</h2>
-      <input placeholder="Genre" autofocus>
-      <input id="soundcloud" placeholder="Soundcloud URL" autofocus>
-      <button core-overlay-toggle>Post</button>
+      <paper-input label="Genre"></paper-input>
+      <paper-input id="soundcloud" label="Soundcloud URL"></paper-input>
+      <paper-button raised core-overlay-toggle>Post</paper-button>
     </core-overlay>
 
     <div class="container" layout vertical center>
@@ -98,6 +113,7 @@ function openDialog() {
     }
 
 </script>
+<script src="http://connect.soundcloud.com/sdk.js"></script>
 <script>
 SC.initialize({
   client_id: '71fa678e4b9d3b6f60126aae271dd51b'
@@ -106,12 +122,12 @@ SC.initialize({
 // permalink to a trackw
 var track_input = document.getElementById('soundcloud');
 var track_url = track_input.value;
+// var track_url = 'https://soundcloud.com/jamie-dorrington/im-in-love-free-download';
 
 SC.get('/resolve', { url: track_url }, function(track) {
-  SC.get('/tracks/' + track.id)
-    track_post = track.id
-      
-    });
+  SC.get('/tracks/' + track.id);
+      console.log(track.id);
+  });
 </script>
 
 
