@@ -19,6 +19,8 @@
   "dependencies": {
     "express": "^4.10.0",
     "body-parser":"*",
-    "node-static":"*"
+    "morgan":"*",
+    "node-static":"*",
+    "mongodb": "*"
   }
 }
