@@ -18,19 +18,20 @@ app.get('/posts/:id', posts.findById);
 app.post('/posts', posts.postSong);
 app.put('/posts/:id', posts.updatePost);
 app.delete('/posts/:id', posts.deletePost);
+app.use(express.static(process.cwd() + '/polymer'));
 //
 // Create a node-static server instance to serve the './polymer' folder
 
-var file = new static.Server('./polymer');
+// var file = new static.Server('./polymer');
 
 
-require('http').createServer(function (request, response) {
-    request.addListener('end', function () {
-        //
-        // Serve files!
-        //
-        file.serve(request, response);
-    }).resume();
-}).listen(process.env.PORT || 8000)
+// require('http').createServer(function (request, response) {
+//     request.addListener('end', function () {
+//         //
+//         // Serve files!
+//         //
+//         file.serve(request, response);
+//     }).resume();
+// }).listen(process.env.PORT || 8000)
 
-app.listen(8001);
+app.listen(8000);

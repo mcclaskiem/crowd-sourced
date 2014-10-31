@@ -20,7 +20,6 @@
     "express": "^4.10.0",
     "body-parser":"*",
     "morgan":"*",
-    "node-static":"*",
     "mongodb": "*"
   }
 }

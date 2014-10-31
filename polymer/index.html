@@ -139,7 +139,7 @@ function getTrackId () {
 
   $.ajax ({
       type: "POST",
-      url: '../api/newposts.json',
+      url: '/posts',
       data: {genre: 'genre_input'},
       success: 'success',
       dataType: 'json'
