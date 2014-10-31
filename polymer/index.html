@@ -108,12 +108,10 @@ var track_input = document.getElementById('soundcloud');
 var track_url = track_input.value;
 
 SC.get('/resolve', { url: track_url }, function(track) {
-  SC.get('/tracks/' + track.id, function(comments) {
-    for (var i = 0; i < comments.length; i++) {
-      console.log('Someone said: ' + comments[i].body);
-    }
-  });
-});
+  SC.get('/tracks/' + track.id)
+    track_post = track.id
+      
+    });
 </script>
 
 
