@@ -8,14 +8,15 @@
   <meta name="viewport" 
   content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-  <script src="../bower_components/platform/platform.js">
-  </script>
+  <script src="../bower_components/platform/platform.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
 
  
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
 <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/core-overlay/core-overlay.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="post-card.html">
 <link rel="import" href="post-list.html">
@@ -42,6 +43,12 @@
         max-width: 80%;
         margin: 50px auto;
       }
+      input {
+        display: block;
+        zoom: 2;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
       @media (max-width: 481px) {
         .container {
           width: 80%;
@@ -64,9 +71,15 @@
       <core-icon-button icon="menu"></core-icon-button>
       <span flex>Tuned-In</span>
       <core-icon-button icon="refresh"></core-icon-button>
-      <core-icon-button icon="add"></core-icon-button>
-
+      <core-icon-button icon="add" onClick="openDialog()"></core-icon-button>
     </core-toolbar>
+
+    <core-overlay backdrop transition="core-transition-top">
+      <h2>New Song</h2>
+      <input placeholder="Genre" autofocus>
+      <input id="soundcloud" placeholder="Soundcloud URL" autofocus>
+      <button core-overlay-toggle>Post</button>
+    </core-overlay>
 
     <div class="container" layout vertical center>
 
@@ -77,12 +90,30 @@
 </core-header-panel>
 
 <script>
-  var tabs = document.querySelector('paper-tabs');
-  var list = document.querySelector('post-list');
 
-  tabs.addEventListener('core-select', function(){
-    list.show = tabs.selected;
+var overlay = document.querySelector('core-overlay');
+
+function openDialog() {
+      overlay.open();
+    }
+
+</script>
+<script>
+SC.initialize({
+  client_id: '71fa678e4b9d3b6f60126aae271dd51b'
+});
+
+// permalink to a track
+var track_input = document.getElementById('soundcloud');
+var track_url = track_input.value;
+
+SC.get('/resolve', { url: track_url }, function(track) {
+  SC.get('/tracks/' + track.id + '/comments', function(comments) {
+    for (var i = 0; i < comments.length; i++) {
+      console.log('Someone said: ' + comments[i].body);
+    }
   });
+});
 </script>
 
 
