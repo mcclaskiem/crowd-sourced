@@ -41,7 +41,7 @@
 
       <template repeat="{{post in posts}}">
         <post-card>
-          <h3 class="username">{{post.genre}}</h3>
+          <h3 class="genre">{{post.genre}}</h3>
           <!-- <img src="{{post.avatar}}" width="70" height="70"> -->
           <h3 class="vote-count">{{post.vote}}</h3>
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
