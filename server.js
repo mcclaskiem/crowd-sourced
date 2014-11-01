@@ -1,37 +1,89 @@
-var static = require('node-static');
 var express = require('express');
-	morgan = require('morgan');
-	bodyParser = require('body-parser');
-	posts = require('./api/posts');
-
-
 var app = express();
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+	mongoose.connect('mongodb://localhost')
+var Post = require('./api/posts');
 
-var env = process.env.NODE_ENV || 'dev';
-if ('dev' == env) {
-	app.use(morgan('dev'));
-	app.use(bodyParser());
-};
+	app.use(bodyParser.urlencoded({ extended: true }));
+	app.use(bodyParser.json());
 
-app.get('/posts', posts.findAll);
-app.get('/posts/:id', posts.findById);
-app.post('/posts', posts.postSong);
-app.put('/posts/:id', posts.updatePost);
-app.delete('/posts/:id', posts.deletePost);
-app.use(express.static(process.cwd() + '/polymer'));
-//
-// Create a node-static server instance to serve the './polymer' folder
-
-// var file = new static.Server('./polymer');
+var port = process.env.port || 8000;
 
 
-// require('http').createServer(function (request, response) {
-//     request.addListener('end', function () {
-//         //
-//         // Serve files!
-//         //
-//         file.serve(request, response);
-//     }).resume();
-// }).listen(process.env.PORT || 8000)
 
-app.listen(8000);
+var Post = require('./api/posts');
+
+var router = express.Router();
+
+
+
+
+app.use('/', express.static(__dirname + '/polymer'));
+
+var postsRoute = router.route('/posts');
+
+postsRoute.post(function(req, res) {
+	var post = new Post();
+
+	post.genre = req.body.genre;
+	post.track = req.body.track;
+	post.vote = req.body.vote;
+
+	post.save(function(err) {
+		if (err)
+			res.send(err);
+
+		res.json({ message: 'Song Added to the List!', data: post});
+	});
+});
+
+postsRoute.get(function(req, res) {
+
+	Post.find(function(err, posts) {
+		if (err)
+			res.send(err);
+
+		res.json(posts);
+	});
+});
+
+var postRoute = router.route('/posts/:post_id');
+
+postRoute.get(function(req, res) {
+	Post.findById(req.params.post_id, function (err, post) {
+		if (err)
+			res.send(err);
+
+		res.json(post);
+	});
+});
+
+postRoute.put(function(req, res) {
+	Post.findById(req.params.post_id, function(err, post) {
+		if (err)
+			res.send(err);
+
+		post.vote = req.body.vote;
+
+		post.save(function(err) {
+			if (err)
+				res.send(err);
+
+			res.json(post);
+		});
+	});
+});
+
+postRoute.delete(function(req, res) {
+	Post.findByIdAndRemove(req.params.post_id, function(err) {
+		if (err)
+			res.send(err);
+
+		res.json({ message: 'Song Removed from the List'});
+	});
+});
+
+app.use('/', router);
+
+app.listen(port);

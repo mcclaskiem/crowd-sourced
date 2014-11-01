@@ -2,7 +2,7 @@
   "name": "crowd-sourced",
   "version": "0.0.0",
   "description": "crowd-sourced server",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/mcclaskiem/crowd-sourced",
   "dependencies": {
-    "express": "^4.10.0",
+    "express": "~4.0.0",
     "body-parser":"*",
-    "morgan":"*",
+    "mongoose":"~3.6.13",
     "mongodb": "*"
   }
 }

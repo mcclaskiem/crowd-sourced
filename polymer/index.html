@@ -131,20 +131,26 @@ function getTrackId () {
   var track_url = track_input.value;
 
 
-
-  SC.get('/resolve', { url: track_url }, function(track) {
+SC.get('/resolve', { url: track_url }, function(track) {
     SC.get('/tracks/' + track.id);
       console.log(track.id);
-  });
 
-  $.ajax ({
+      var track = track.id;
+
+      $.ajax ({
       type: "post",
       url: '/posts',
-      data: {genre: 'genre_input'},
+      data: {genre: genre_input, track: String(track), vote: 0},
       // success: 'success',
       dataType: 'json'
+    });
   });
 };
+
+
+
+
+  
 </script>
 
 
