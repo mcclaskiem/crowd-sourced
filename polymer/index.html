@@ -20,6 +20,7 @@
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../elements/post-service.html">
 <link rel="import" href="post-card.html">
 <link rel="import" href="post-list.html">
 
@@ -120,10 +121,10 @@ SC.initialize({
 });
 
 // permalink to a track
-document.getElementById("song-post").addEventListener("click", getTrackId);
+document.getElementById("song-post").addEventListener("click", postTrack);
 
 
-function getTrackId () {
+function postTrack () {
   var genre = document.getElementById("genre");
   var genre_input = genre.value;
 
@@ -145,11 +146,8 @@ SC.get('/resolve', { url: track_url }, function(track) {
       dataType: 'json'
     });
   });
+  window.location.reload();
 };
-
-
-
-
   
 </script>
 
