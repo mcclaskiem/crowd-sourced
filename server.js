@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-	mongoose.connect('mongodb://maxmc:dukelax01@ds049160.mongolab.com:49160/polymer-music');
+	mongoose.connect('mongodb://admin:admmin1234@ds047950.mongolab.com:47950/polymer_music');
 var Post = require('./api/posts');
 
 	app.use(bodyParser.urlencoded({ extended: true }));
