@@ -29,6 +29,19 @@
       color: #FF6600;
     }
 
+    core-icon-button {
+      position: absolute;
+      float: right;
+      top: 50px;
+      right: 40px;
+      color: #FF6600;
+      zoom: 1.2;
+    }
+
+    .arrow-down {
+      top: 10px;
+    }
+
 /*    .username {
       margin: 0;  
     }*/
@@ -43,6 +56,14 @@
         <post-card>
           <h3 class="genre">{{post.genre}}</h3>
           <!-- <img src="{{post.avatar}}" width="70" height="70"> -->
+          <core-icon-button
+            class="arrow-up"
+            icon="expand-more">
+          </core-icon-button>
+          <core-icon-button
+            class="arrow-down"
+            icon="expand-less">
+          </core-icon-button>
           <h3 class="vote-count">{{post.vote}}</h3>
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
         </post-card>
@@ -54,10 +75,7 @@
 
   <script>
   Polymer({
-    handleFavorite: function(event, detail, sender) {
-      var post = sender.templateInstance.model.post;
-      this.$.service.setFavorite(post.uid, post.favorite);
-    }
+    
   });
   </script>
 

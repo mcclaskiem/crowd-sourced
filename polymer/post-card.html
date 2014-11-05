@@ -33,17 +33,7 @@
       margin: 10px;
     }
 
-    core-icon-button {
-      position: absolute;
-      float: right;
-      top: 50px;
-      right: 40px;
-      color: #FF6600;
-      zoom: 1.2;
-    }
-    .arrow-down {
-      top: 10px;
-    }
+
 
     :host([upvote]) core-icon-button {
       color: #da4336;
@@ -61,32 +51,14 @@
       <content select="img"></content>
     </div>
 
-        <core-icon-button
-          class="arrow-up"
-          icon="expand-more"
-          on-tap="{{voteUp}}">
-        </core-icon-button>
-        <core-icon-button
-        class="arrow-down"
-          icon="expand-less"
-          on-tap="{{voteDown}}">
-        </core-icon-button>
+
 
     <content></content>
     
   </template>
   <script>
   Polymer({
-    publish: {
-      favorite: {
-        value: false,
-        reflect: true
-      }
-    },
-    favoriteUp: function(event, detail, sender) {
-      this.favorite = !this.favorite;
-      this.fire('favorite-tap');
-    }
+    publish: {}
   });
   </script>
 </polymer-element>
