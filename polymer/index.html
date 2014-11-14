@@ -3,12 +3,11 @@
 
 <head>
 
-  <title>Tuned-In</title>
+<title>Tuned-In</title>
 
-  <meta name="viewport" 
-  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-  <script src="../bower_components/platform/platform.js"></script>
+<script src="../bower_components/platform/platform.js"></script>
   
 
  
@@ -98,10 +97,10 @@
       <h2>New Song</h2>
       <paper-input id="genre" label="Genre"></paper-input>
       <paper-input id="soundcloud" label="Soundcloud URL"></paper-input>
-      <paper-button raised core-overlay-toggle id="song-post">Post</paper-button>
+      <paper-button raised core-overlay-toggle id="song-post" onClick="setTimeout(refreshDiv, 3000)">Post</paper-button>
     </core-overlay>
 
-    <div class="container" layout vertical center>
+    <div class="container" id="refresh" layout vertical center>
 
       <post-list show-"all" id="song-posts"></post-list>
 
@@ -152,6 +151,13 @@ SC.get('/resolve', { url: track_url }, function(track) {
     });
   });
 };
+
+
+function refreshDiv(){
+    var list = document.getElementById("refresh");
+                var content = list.innerHTML;
+                list.innerHTML = content;
+            } 
   
 </script>
 
