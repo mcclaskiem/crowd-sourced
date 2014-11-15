@@ -22,13 +22,17 @@
     }
 
 
-    .vote-count {
+    #vote-count {
       position: relative;
       float: right;
       top: -42.5px;
       right: 0px;
       margin: 0;
       color: #FF6600;
+    }
+
+    p {
+      display: none;
     }
 
 /*    .username {
@@ -46,10 +50,12 @@
           <h3 class="genre">{{post.genre}}</h3>
           <!-- <img src="{{post.avatar}}" width="70" height="70"> -->
 
-          <arrow-up class="arrows"></arrow-up>
-          <arrow-down class="arrows"></arrow-down>
+          <arrow-up class="arrows" id="vote-up" onclick="upVote()"></arrow-up>
+          <arrow-down class="arrows" id="vote-down"></arrow-down>
 
-          <h3 class="vote-count">{{post.vote}}</h3>
+          <p id="post-id">{{post._id}}</p>
+
+          <h3 id="vote-count">{{post.vote}}</h3>
 
 
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
@@ -62,11 +68,39 @@
     </div>
     
   </template>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+
+
+    function upVote () {
+          var post = document.getElementById("post-id");
+          var post_id = post.value;
+
+          var vote = document.getElementById("vote-count");
+          var vote_value = vote.value;
+
+          $.ajax ({
+              type: "put",
+              url: '/posts' + post_id,
+              data: { vote: vote_value + 1},
+              dataType: 'json'
+              });
+
+    };
+
+
+    // var post = document.getElementById("post-id");
+    // var post_id = post.value;
+
+
+
+
+
+
+  </script>
 
   <script>
-  Polymer({
-    
-  });
+  Polymer({});
   </script>
 
 </polymer-element>
