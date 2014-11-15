@@ -1,0 +1,43 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="arrow-down">
+
+  <template>
+    <style>
+    core-ajax {
+      display: none;
+    }
+
+    .arrow-down {
+      position: absolute;
+      float: right;
+      top: 50px;
+      right: 40px;
+      color: #FF6600;
+      zoom: 1.2;
+    }
+
+    </style>
+
+    <core-icon-button
+    class="arrow-down"
+    icon="expand-more">
+    </core-icon-button>
+
+
+
+    <core-ajax id="ajax"
+      auto
+      url="/posts"
+      on-core-response="{{postsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+
+  <script>
+  Polymer({
+
+  });
+  </script>
+</polymer-element>

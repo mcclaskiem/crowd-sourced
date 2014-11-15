@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="arrow-up">
+  <template>
+
+    <style>
+    core-ajax {
+      display: none;
+    }
+
+    .arrow-up {
+      position: absolute;
+      float: right;
+      top: 5px;
+      right: 40px;
+      color: #FF6600;
+      zoom: 1.2;
+    }
+
+    </style>
+
+    <core-icon-button
+    class="arrow-up"
+    icon="expand-less">
+    </core-icon-button>
+
+    <core-ajax id="ajax"
+      auto
+      url="/posts"
+      on-core-response="{{postsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+
+  </template>
+
+  <script>
+  Polymer({
+
+  });
+  </script>
+</polymer-element>
