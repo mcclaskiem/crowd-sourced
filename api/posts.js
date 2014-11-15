@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
-	genre: String,6
+	genre: String,
 	track: String,
 	vote: Number
 });

@@ -2,6 +2,8 @@
 <link rel="import" href="../elements/post-service.html">
 <link rel="import" href="../elements/soundcloud-player.html">
 <link rel="import" href="../elements/facebook-login.html">
+<link rel="import" href="../elements/arrow-up.html">
+<link rel="import" href="../elements/arrow-down.html">
 <link rel="import" href="post-card.html">
 
 <polymer-element name="post-list" attributes="show">
@@ -24,22 +26,9 @@
       position: relative;
       float: right;
       top: -42.5px;
-      right: 5px;
+      right: 0px;
       margin: 0;
       color: #FF6600;
-    }
-
-    core-icon-button {
-      position: absolute;
-      float: right;
-      top: 50px;
-      right: 40px;
-      color: #FF6600;
-      zoom: 1.2;
-    }
-
-    .arrow-down {
-      top: 10px;
     }
 
 /*    .username {
@@ -47,23 +36,19 @@
     }*/
     </style>
     
-    <post-service id="service" posts="{{posts}}">
-    </post-service>
+    <post-service id="service" posts="{{posts}}"></post-service>
 
     <div layout vertical center>
 
       <template repeat="{{post in posts}}">
+
         <post-card>
           <h3 class="genre">{{post.genre}}</h3>
           <!-- <img src="{{post.avatar}}" width="70" height="70"> -->
-          <core-icon-button
-            class="arrow-up"
-            icon="expand-more">
-          </core-icon-button>
-          <core-icon-button
-            class="arrow-down"
-            icon="expand-less">
-          </core-icon-button>
+
+          <arrow-up class="arrows"></arrow-up>
+          <arrow-down class="arrows"></arrow-down>
+
           <h3 class="vote-count">{{post.vote}}</h3>
 
 
