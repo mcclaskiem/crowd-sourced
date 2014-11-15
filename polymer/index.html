@@ -59,8 +59,8 @@
 
       core-overlay {
         background: #FFF;
-        width: 30%;
-        height: 30%;
+        width: 40%;
+        height: 40%;
         text-align: center;
       }
       @media only screen and (max-width: 600px) {
@@ -97,7 +97,7 @@
       <h2>New Song</h2>
       <paper-input id="genre" label="Genre"></paper-input>
       <paper-input id="soundcloud" label="Soundcloud URL"></paper-input>
-      <paper-button raised core-overlay-toggle id="song-post" onClick="setTimeout(refreshDiv, 2000)">Post</paper-button>
+      <paper-button raised core-overlay-toggle id="song-post" onClick="setTimeout(refreshDiv, 300)">Post</paper-button>
     </core-overlay>
 
     <div class="container" id="refresh" layout vertical center>
@@ -157,7 +157,8 @@ function refreshDiv(){
                 var content = list.innerHTML;
                 list.innerHTML = content;
             }
-  
+
+
 </script>
 
 

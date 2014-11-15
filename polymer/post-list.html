@@ -2,8 +2,6 @@
 <link rel="import" href="../elements/post-service.html">
 <link rel="import" href="../elements/soundcloud-player.html">
 <link rel="import" href="../elements/facebook-login.html">
-<link rel="import" href="../elements/arrow-up.html">
-<link rel="import" href="../elements/arrow-down.html">
 <link rel="import" href="post-card.html">
 
 <polymer-element name="post-list" attributes="show">
@@ -35,6 +33,24 @@
       display: none;
     }
 
+    .arrow-up {
+      position: absolute;
+      float: right;
+      top: 5px;
+      right: 40px;
+      color: #FF6600;
+      zoom: 1.2;
+    }
+
+    .arrow-down {
+      position: absolute;
+      float: right;
+      top: 50px;
+      right: 40px;
+      color: #FF6600;
+      zoom: 1.2;
+    }
+
 /*    .username {
       margin: 0;  
     }*/
@@ -47,13 +63,12 @@
       <template repeat="{{post in posts}}">
 
         <post-card>
-          <h3 class="genre">{{post.genre}}</h3>
-          <!-- <img src="{{post.avatar}}" width="70" height="70"> -->
+          <h3 class="genre" id="genre-label">{{post.genre}}</h3>
 
-          <arrow-up class="arrows" id="vote-up" onclick="upVote()"></arrow-up>
-          <arrow-down class="arrows" id="vote-down"></arrow-down>
+          <core-icon-button class="arrow-up" icon="expand-less" onClick="upVote('{{post_.id}}', '{{post.vote}}')"></core-icon-button>
+          <core-icon-button class="arrow-down" icon="expand-more" onClick="downVote()"></core-icon-button>
 
-          <p id="post-id">{{post._id}}</p>
+
 
           <h3 id="vote-count">{{post.vote}}</h3>
 
@@ -72,17 +87,35 @@
   <script>
 
 
-    function upVote () {
-          var post = document.getElementById("post-id");
-          var post_id = post.value;
+    function upVote (post_id, vote_value) {
+          // console.log("Voting Up...");
+          // var post = document.getElementById("mongo");
+          // var post_id = post_id;
+          console.log(post_id);
+          console.log(vote_value);
+
+          $.ajax ({
+              type: "put",
+              url: '/posts/' + post_id,
+              data: { vote: vote_value + 1},
+              dataType: 'json'
+              });
+
+    };
+
+    function downVote () {
+          
+          var post = document.getElementById("mongo");
+          
+          var post_id = post.innerHTML;
 
           var vote = document.getElementById("vote-count");
-          var vote_value = vote.value;
+          var vote_value = vote.innerHTML;
 
           $.ajax ({
               type: "put",
               url: '/posts' + post_id,
-              data: { vote: vote_value + 1},
+              data: { vote: vote_value - 1},
               dataType: 'json'
               });
 
