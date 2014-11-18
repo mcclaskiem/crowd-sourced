@@ -65,12 +65,12 @@
         <post-card>
           <h3 class="genre" id="genre-label">{{post.genre}}</h3>
 
-          <core-icon-button class="arrow-up" icon="expand-less" onClick="upVote('{{post_.id}}', '{{post.vote}}')"></core-icon-button>
-          <core-icon-button class="arrow-down" icon="expand-more" onClick="downVote()"></core-icon-button>
+          <div onClick="setTimeout(refreshVote, 1000)">
+            <core-icon-button class="arrow-up" icon="expand-less" onClick="upVote('{{post._id}}', '{{post.vote}}')"></core-icon-button>
+            <core-icon-button class="arrow-down" icon="expand-more" onClick="downVote('{{post._id}}', '{{post.vote}}')"></core-icon-button>
+          </div>
 
-
-
-          <h3 id="vote-count">{{post.vote}}</h3>
+            <h3 id="vote-count">{{post.vote}}</h3>
 
 
           <soundcloud-player track-id="{{post.track}}"></soundcloud-player>
@@ -86,40 +86,44 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
 
-
     function upVote (post_id, vote_value) {
           // console.log("Voting Up...");
           // var post = document.getElementById("mongo");
           // var post_id = post_id;
-          console.log(post_id);
-          console.log(vote_value);
+          var post = post_id; 
+          var vote = vote_value;
 
           $.ajax ({
               type: "put",
-              url: '/posts/' + post_id,
-              data: { vote: vote_value + 1},
+              url: '/posts/' + post,
+              data: { vote: parseInt(vote) + 1},
               dataType: 'json'
               });
 
     };
 
-    function downVote () {
+    function downVote (post_id, vote_value) {
           
-          var post = document.getElementById("mongo");
-          
-          var post_id = post.innerHTML;
-
-          var vote = document.getElementById("vote-count");
-          var vote_value = vote.innerHTML;
+          var post = post_id;
+          var vote = vote_value;
 
           $.ajax ({
               type: "put",
-              url: '/posts' + post_id,
-              data: { vote: vote_value - 1},
+              url: '/posts/' + post,
+              data: { vote: parseInt(vote) - 1},
               dataType: 'json'
               });
 
+
     };
+
+    function refreshVote(){
+    var list = document.getElementById("vote-count");
+                console.log("Got Tag");
+                var content = list.innerHTML;
+                list.innerHTML = content;
+                console.log("refreshed count");
+            };
 
 
     // var post = document.getElementById("post-id");
